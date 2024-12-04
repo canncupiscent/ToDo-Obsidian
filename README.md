@@ -6,12 +6,16 @@ A modern Flutter Todo app with clean architecture and Obsidian documentation.
 
 This project combines the power of Flutter for app development with Obsidian for documentation and project management. It demonstrates best practices in mobile app development while maintaining comprehensive documentation.
 
-## Features (Planned)
+## Features (Implemented)
 
 - ✨ Clean, intuitive UI with Material Design 3
 - 📝 Basic task management (CRUD operations)
-- 🏷️ Task categories and tags
 - ⏰ Due dates and reminders
+- ❌ Swipe to delete tasks
+- ✅ Task completion tracking
+
+### Coming Soon
+- 🏷️ Task categories and tags
 - ⭐ Priority levels
 - 💾 Local storage with SQLite
 - 🔄 Cloud sync (future feature)
@@ -19,8 +23,8 @@ This project combines the power of Flutter for app development with Obsidian for
 ## Tech Stack
 
 - Flutter/Dart
-- Provider for state management
-- SQLite for local storage
+- Riverpod for state management
+- SQLite for local storage (planned)
 - Material Design 3
 - Firebase (planned for future)
 
@@ -32,6 +36,31 @@ This project combines the power of Flutter for app development with Obsidian for
 - Dart SDK
 - VS Code or Android Studio
 - Git
+- Chrome (for web development)
+
+### Flutter Setup
+
+1. Install Flutter SDK:
+   ```bash
+   # Download Flutter SDK from https://docs.flutter.dev/get-started/install
+   
+   # Add Flutter to your path (for zsh)
+   echo 'export PATH="$PATH:$HOME/development/flutter/bin"' >> ~/.zshrc
+   source ~/.zshrc
+   
+   # Verify installation
+   flutter --version
+   flutter doctor
+   ```
+
+2. Enable Platform Support:
+   ```bash
+   # For web support
+   flutter config --enable-web
+   
+   # For macOS desktop support
+   flutter config --enable-macos-desktop
+   ```
 
 ### Installation
 
@@ -45,8 +74,12 @@ cd ToDo-Obsidian
 # Get dependencies
 flutter pub get
 
-# Run the app
-flutter run
+# Enable web platform
+flutter create --platforms=web .
+
+# Run the app (choose one)
+flutter run -d chrome  # For web
+flutter run -d macos  # For macOS desktop
 ```
 
 ## Project Structure
@@ -69,6 +102,23 @@ lib/
     ├── widgets/       # Reusable widgets
     └── shared/        # Shared UI elements
 ```
+
+## Troubleshooting
+
+1. **"Command not found: flutter"**
+   - Make sure Flutter is properly installed and added to your PATH
+   - Check your shell profile (.zshrc for zsh users)
+   - Run `source ~/.zshrc` after updating PATH
+
+2. **"No supported devices connected"**
+   - Enable web support: `flutter config --enable-web`
+   - Enable macOS support: `flutter config --enable-macos-desktop`
+   - Create platform-specific projects: `flutter create --platforms=web .`
+
+3. **Platform Selection**
+   - Web: `flutter run -d chrome`
+   - macOS: `flutter run -d macos`
+   - List all devices: `flutter devices`
 
 ## Documentation
 
