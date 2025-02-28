@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
-import 'screens/task_list_screen.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'screens/bottom_nav_screen.dart';
+import '../core/themes/app_theme.dart';
+import '../data/providers/settings_provider.dart';
 
-class TodoApp extends StatelessWidget {
+class TodoApp extends ConsumerWidget {
   const TodoApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final settings = ref.watch(settingsProvider);
+    
     return MaterialApp(
       title: 'Todo Obsidian',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const TaskListScreen(),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: settings.themeMode,
+      home: const BottomNavScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
